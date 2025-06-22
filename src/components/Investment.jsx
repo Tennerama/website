@@ -17,6 +17,10 @@ import { useLanguage } from '../hooks/useLanguage';
 const Investment = () => {
   const { t } = useLanguage();
 
+  // Temporarily hidden - Investment Information section
+  return null;
+
+  /* Original component code temporarily hidden
   const highlights = [
     {
       icon: DollarSign,
@@ -68,7 +72,6 @@ const Investment = () => {
   return (
     <section id="investment" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {t('investment.title')}
@@ -79,7 +82,6 @@ const Investment = () => {
           </p>
         </div>
 
-        {/* Investment Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {highlights.map((highlight, index) => (
             <Card key={index} className="relative overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 shadow-lg">
@@ -100,14 +102,12 @@ const Investment = () => {
                   {highlight.description}
                 </p>
                 
-                {/* Decorative element */}
                 <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${highlight.color.replace('text-', 'from-')} to-transparent`}></div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* ROI Breakdown */}
         <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 md:p-12 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -164,14 +164,12 @@ const Investment = () => {
           </div>
         </div>
 
-        {/* Franchise Process */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
             {t('investment.process.title')}
           </h3>
           
           <div className="relative">
-            {/* Process Steps */}
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
               {processSteps.map((step, index) => (
                 <div key={index} className="relative">
@@ -189,7 +187,6 @@ const Investment = () => {
                     </h4>
                   </div>
                   
-                  {/* Connector Line */}
                   {index < processSteps.length - 1 && (
                     <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-purple-300 to-blue-300 transform -translate-y-0.5"></div>
                   )}
@@ -199,7 +196,6 @@ const Investment = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="text-center bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-8 md:p-12 text-white">
           <h3 className="text-3xl font-bold mb-4">
             Ready to Start Your Franchise Journey?
@@ -228,6 +224,7 @@ const Investment = () => {
       </div>
     </section>
   );
+  */
 };
 
 export default Investment;
