@@ -14,22 +14,19 @@ const About = () => {
       icon: Store,
       name: t('about.subBrands.expo.name'),
       description: t('about.subBrands.expo.description'),
-      color: 'bg-purple-500',
-      badge: 'Premium'
+      color: 'bg-purple-500'
     },
     {
       icon: Store,
       name: t('about.subBrands.inc.name'),
       description: t('about.subBrands.inc.description'),
-      color: 'bg-blue-500',
-      badge: 'Core'
+      color: 'bg-blue-500'
     },
     {
       icon: Truck,
       name: t('about.subBrands.popup.name'),
       description: t('about.subBrands.popup.description'),
-      color: 'bg-green-500',
-      badge: 'Mobile'
+      color: 'bg-green-500'
     }
   ];
 
@@ -94,13 +91,10 @@ const About = () => {
             {subBrands.map((brand, index) => (
               <Card key={index} className="relative overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-0 shadow-lg">
                 <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-center mb-4">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${brand.color} text-white`}>
                       <brand.icon className="h-6 w-6" />
                     </div>
-                    <Badge variant="secondary" className="text-xs">
-                      {brand.badge}
-                    </Badge>
                   </div>
                   
                   <h4 className="text-xl font-bold text-gray-900 mb-3">
