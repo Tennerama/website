@@ -305,19 +305,12 @@ const Contact = () => {
             <p className="text-xl text-gray-600 mb-8">
               Take the first step towards building your successful retail business
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Schedule a Call
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-purple-200 text-purple-600 hover:bg-purple-50 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
-              >
-                Download Info Pack
               </Button>
             </div>
           </div>
