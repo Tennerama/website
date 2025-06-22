@@ -44,17 +44,20 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white relative">
-      {/* Back to Top Button */}
-      <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-        <Button
-          onClick={scrollToTop}
-          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition-all duration-300"
-        >
-          <ArrowUp className="h-5 w-5" />
-        </Button>
-      </div>
+      {/* Background Decoration */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        {/* Back to Top Button */}
+        <div className="flex justify-center mb-8">
+          <Button
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <ArrowUp className="h-5 w-5" />
+          </Button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -183,9 +186,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600"></div>
     </footer>
   );
 };
