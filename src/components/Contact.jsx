@@ -13,7 +13,8 @@ import {
   MapPin,
   Send,
   CheckCircle,
-  Calendar
+  Calendar,
+  X
 } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 
@@ -29,6 +30,18 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  
+  // 预约表单状态
+  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [bookingData, setBookingData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    preferredTime: '',
+    location: '',
+    message: ''
+  });
+  const [isBookingSubmitted, setIsBookingSubmitted] = useState(false);
 
   const contactMethods = [
     {
@@ -131,6 +144,70 @@ This inquiry was submitted from the Tennerama franchise website.
       setSubmitError('Failed to open email client. Please contact us directly at info@tennerama.com');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleBookingInputChange = (e) => {
+    setBookingData({
+      ...bookingData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleBookingSubmit = async (e) => {
+    e.preventDefault();
+    setIsBookingSubmitted(true);
+    
+    try {
+      const subject = 'Schedule Franchise Consultation - Tennerama';
+      const body = `
+Dear Tennerama Team,
+
+I would like to schedule a consultation call to discuss franchising opportunities with Tennerama.
+
+Contact Information:
+Name: ${bookingData.name}
+Email: ${bookingData.email}
+Phone: ${bookingData.phone || 'Not provided'}
+
+Preferred Consultation Time: ${bookingData.preferredTime}
+Location of Interest: ${bookingData.location || 'Not specified'}
+
+Additional Message:
+${bookingData.message || 'No additional message'}
+
+Please contact me to confirm the consultation time.
+
+Thank you for your time.
+
+Best regards,
+${bookingData.name}
+
+---
+This consultation request was submitted from the Tennerama franchise website.
+      `.trim();
+      
+      const mailtoLink = `mailto:info@tennerama.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoLink, '_blank');
+      
+      // 清空表单
+      setBookingData({
+        name: '',
+        email: '',
+        phone: '',
+        preferredTime: '',
+        location: '',
+        message: ''
+      });
+      
+      // 3秒后关闭弹窗
+      setTimeout(() => {
+        setShowBookingForm(false);
+        setIsBookingSubmitted(false);
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Failed to open email client:', error);
     }
   };
 
@@ -346,7 +423,7 @@ This inquiry was submitted from the Tennerama franchise website.
                     variant="secondary" 
                     size="lg"
                     className="w-full bg-white text-purple-600 hover:bg-gray-100 font-semibold"
-                    onClick={() => window.open('mailto:info@tennerama.com?subject=Schedule Franchise Consultation', '_blank')}
+                    onClick={() => setShowBookingForm(true)}
                   >
                     Book Consultation
                   </Button>
@@ -356,6 +433,141 @@ This inquiry was submitted from the Tennerama franchise website.
           </div>
         </div>
       </div>
+
+      {/* Booking Form Modal */}
+      {showBookingForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <CardContent className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Schedule a Consultation
+                </h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowBookingForm(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+              
+              {!isBookingSubmitted ? (
+                <form onSubmit={handleBookingSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={bookingData.name}
+                      onChange={handleBookingInputChange}
+                      required
+                      className="w-full"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={bookingData.email}
+                      onChange={handleBookingInputChange}
+                      required
+                      className="w-full"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <Input
+                      type="tel"
+                      name="phone"
+                      value={bookingData.phone}
+                      onChange={handleBookingInputChange}
+                      className="w-full"
+                      placeholder="Enter your phone number"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Preferred Consultation Time
+                    </label>
+                    <Input
+                      type="text"
+                      name="preferredTime"
+                      value={bookingData.preferredTime}
+                      onChange={handleBookingInputChange}
+                      className="w-full"
+                      placeholder="e.g., Weekdays 2-4 PM, Weekends anytime"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Location of Interest
+                    </label>
+                    <Input
+                      type="text"
+                      name="location"
+                      value={bookingData.location}
+                      onChange={handleBookingInputChange}
+                      className="w-full"
+                      placeholder="City or region of interest"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Additional Message
+                    </label>
+                    <Textarea
+                      name="message"
+                      value={bookingData.message}
+                      onChange={handleBookingInputChange}
+                      rows={3}
+                      className="w-full"
+                      placeholder="Tell us about your interest in franchising with Tennerama..."
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit"
+                    size="lg"
+                    disabled={isBookingSubmitted}
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isBookingSubmitted ? 'Sending...' : 'Schedule Consultation'}
+                    <Calendar className="ml-2 h-5 w-5" />
+                  </Button>
+                </form>
+              ) : (
+                <div className="text-center py-8">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                    <CheckCircle className="h-8 w-8 text-green-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">
+                    Consultation Request Sent!
+                  </h4>
+                  <p className="text-gray-600">
+                    Thank you for your interest. Our team will contact you to confirm your consultation time.
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </section>
   );
 };
