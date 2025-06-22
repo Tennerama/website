@@ -1,13 +1,36 @@
 {
   "name": "tennerama-franchise",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A modern, responsive franchise website for Tennerama's $10 boutique business opportunity",
   "type": "module",
+  "keywords": [
+    "react",
+    "vite",
+    "tailwindcss",
+    "franchise",
+    "business",
+    "website",
+    "responsive",
+    "multilingual"
+  ],
+  "author": "Tennerama Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/tennerama-franchise-website.git"
+  },
+  "homepage": "https://tennerama.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
