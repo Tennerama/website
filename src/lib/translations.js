@@ -39,7 +39,7 @@ export const translations = {
     },
     about: {
       title: 'About Tennerama',
-      story: 'Founded in 2015, Tennerama identified market demand for quality products without premium pricing. Our "$10 boutique" model has achieved remarkable success, serving millions of customers while maintaining exceptional quality standards through SGS certification.',
+      story: 'After more than 20 years in the liquidation business, Nationwide Event Liquidator launched a new division called Tennerama Inc. This concept focuses on acquiring overstock and bankruptcy inventory, offering every item for just $10. Each Tennerama location carries between 50,000 to 100,000 items, with approximately 50% being clothing. The rest includes electronics, bedding, housewares, accessories, perfumes, and a wide variety of unique items. Tennerama also partners with local merchants to help liquidate distressed inventory, making each store\'s selection and promotions distinct and ever-changing.',
       subBrands: {
         title: 'Our Sub-Brands',
         expo: {
@@ -157,7 +157,7 @@ export const translations = {
     },
     about: {
       title: 'À Propos de Tennerama',
-      story: 'Fondée en 2015, Tennerama a identifié la demande du marché pour des produits de qualité sans prix premium. Notre modèle "boutique à 10$" a connu un succès remarquable, servant des millions de clients tout en maintenant des standards de qualité exceptionnels grâce à la certification SGS.',
+      story: 'Après plus de 20 ans dans le secteur de la liquidation, Nationwide Event Liquidator a lancé une nouvelle division appelée Tennerama Inc. Ce concept se concentre sur l\'acquisition d\'inventaire de surplus et de faillite, offrant chaque article pour seulement 10$. Chaque emplacement Tennerama transporte entre 50 000 et 100 000 articles, dont environ 50% sont des vêtements. Le reste comprend l\'électronique, la literie, les articles ménagers, les accessoires, les parfums et une grande variété d\'articles uniques. Tennerama s\'associe également aux marchands locaux pour aider à liquider l\'inventaire en difficulté, rendant la sélection et les promotions de chaque magasin distinctes et en constante évolution.',
       subBrands: {
         title: 'Nos Sous-Marques',
         expo: {
@@ -275,7 +275,7 @@ export const translations = {
     },
     about: {
       title: '关于Tennerama',
-      story: '成立于2015年，Tennerama发现了市场对优质产品而非高价产品的需求。我们的"十元精品"模式取得了显著成功，在为数百万客户提供服务的同时，通过SGS认证保持了卓越的质量标准。',
+      story: '在清算行业经营超过20年后，Nationwide Event Liquidator推出了一个名为Tennerama Inc.的新部门。这个概念专注于收购过剩库存和破产库存，每件商品仅售10美元。每个Tennerama门店拥有50,000至100,000件商品，其中约50%为服装。其余包括电子产品、床上用品、家居用品、配饰、香水以及各种独特商品。Tennerama还与当地商家合作，帮助清算滞销库存，使每家门店的商品选择和促销活动都独具特色且不断变化。',
       subBrands: {
         title: '我们的子品牌',
         expo: {
