@@ -16,7 +16,6 @@ import {
   Calendar
 } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
-import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -30,13 +29,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  // EmailJS配置 - 需要替换为你的实际配置
-  const EMAILJS_CONFIG = {
-    SERVICE_ID: 'your_service_id', // 替换为你的EmailJS服务ID
-    TEMPLATE_ID: 'your_template_id', // 替换为你的EmailJS模板ID
-    USER_ID: 'your_user_id' // 替换为你的EmailJS用户ID
-  };
 
   const contactMethods = [
     {
@@ -96,22 +88,28 @@ const Contact = () => {
     setSubmitError('');
 
     try {
-      // 使用EmailJS发送邮件
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          location: formData.location,
-          message: formData.message,
-          to_email: 'info@tennerama.com' // 接收邮件的邮箱
-        },
-        EMAILJS_CONFIG.USER_ID
-      );
+      // 构建邮件内容
+      const subject = 'Tennerama Franchise Inquiry';
+      const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Location: ${formData.location || 'Not provided'}
 
-      console.log('Email sent successfully:', result);
+Message:
+${formData.message || 'No message provided'}
+
+---
+This inquiry was submitted from the Tennerama franchise website.
+      `.trim();
+
+      // 使用mailto链接发送邮件
+      const mailtoLink = `mailto:info@tennerama.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // 打开用户的默认邮件客户端
+      window.open(mailtoLink, '_blank');
+      
+      console.log('Email client opened with form data');
       setIsSubmitted(true);
       
       // 清空表单
@@ -129,79 +127,12 @@ const Contact = () => {
       }, 3000);
 
     } catch (error) {
-      console.error('Email send failed:', error);
-      setSubmitError('Failed to send message. Please try again or contact us directly.');
+      console.error('Failed to open email client:', error);
+      setSubmitError('Failed to open email client. Please contact us directly at info@tennerama.com');
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  // 如果没有配置EmailJS，显示配置说明
-  if (EMAILJS_CONFIG.SERVICE_ID === 'your_service_id') {
-    return (
-      <section id="contact" className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              {t('contact.title')}
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to start your franchise journey? Get in touch with our team for personalized consultation
-            </p>
-          </div>
-
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-semibold text-yellow-800 mb-2">
-              📧 Email Configuration Required
-            </h3>
-            <p className="text-yellow-700 mb-4">
-              To enable form submission, you need to configure EmailJS:
-            </p>
-            <ol className="text-sm text-yellow-700 space-y-2 list-decimal list-inside">
-              <li>Sign up at <a href="https://www.emailjs.com" target="_blank" rel="noopener noreferrer" className="underline">emailjs.com</a></li>
-              <li>Create an email service (Gmail, Outlook, etc.)</li>
-              <li>Create an email template</li>
-              <li>Update the EMAILJS_CONFIG in Contact.jsx with your IDs</li>
-            </ol>
-            <p className="text-sm text-yellow-600 mt-4">
-              <strong>Current Status:</strong> Form submissions are simulated (no actual emails sent)
-            </p>
-          </div>
-
-          {/* 显示联系信息 */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-3">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {contactMethods.map((method, index) => (
-                  <Card key={index} className="shadow-lg border-0">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${method.bgColor}`}>
-                          <method.icon className={`h-5 w-5 ${method.color}`} />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 mb-1">
-                            {method.title}
-                          </h4>
-                          <p className={`font-medium ${method.color} mb-1`}>
-                            {method.value}
-                          </p>
-                          <p className="text-sm text-gray-600">
-                            {method.description}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
