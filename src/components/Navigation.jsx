@@ -52,20 +52,19 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Language Selector & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Language Selector only */}
+          <div className="hidden md:flex items-center">
             <div className="relative">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className="flex items-center space-x-1"
+                className="flex items-center justify-center space-x-1 w-[150px]"
               >
-                <Globe className="h-4 w-4" />
-                <span>{languages[currentLanguage].flag}</span>
+                <Globe className="h-4 w-4 flex-shrink-0" />
+                <span className="flex-shrink-0">{languages[currentLanguage].flag}</span>
                 <span>{languages[currentLanguage].name}</span>
               </Button>
-              
               {isLanguageOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200">
                   {Object.values(languages).map((lang) => (
@@ -86,13 +85,6 @@ const Navigation = () => {
                 </div>
               )}
             </div>
-            
-            <Button 
-              onClick={() => scrollToSection('#contact')}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-            >
-              {t('hero.cta')}
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -121,7 +113,6 @@ const Navigation = () => {
                 {t(`nav.${item.key}`)}
               </button>
             ))}
-            
             {/* Mobile Language Selector */}
             <div className="px-3 py-2">
               <div className="flex items-center space-x-2 mb-2">
@@ -145,15 +136,6 @@ const Navigation = () => {
                   </button>
                 ))}
               </div>
-            </div>
-            
-            <div className="px-3 py-2">
-              <Button 
-                onClick={() => scrollToSection('#contact')}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-              >
-                {t('hero.cta')}
-              </Button>
             </div>
           </div>
         </div>
