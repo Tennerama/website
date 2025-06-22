@@ -27,7 +27,7 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      headline: 'Join the $10 Boutique Revolution',
+      headline: 'Turn Clearance Into Cash',
       subheadline: 'Partner with Tennerama and build a profitable retail business with our proven franchise model',
       cta: 'Start Your Franchise Journey'
     },
@@ -145,7 +145,7 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
-      headline: 'Rejoignez la Révolution Boutique à 10$',
+      headline: 'Transformez les Liquidation en Argent',
       subheadline: 'Associez-vous à Tennerama et construisez une entreprise de vente au détail rentable avec notre modèle de franchise éprouvé',
       cta: 'Commencez Votre Parcours de Franchise'
     },
@@ -263,7 +263,7 @@ export const translations = {
       contact: '联系我们'
     },
     hero: {
-      headline: '加入十元精品革命',
+      headline: '将清仓变成现金',
       subheadline: '与Tennerama合作，通过我们成熟的加盟模式建立盈利的零售业务',
       cta: '开始您的加盟之旅'
     },
