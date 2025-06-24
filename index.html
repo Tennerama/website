@@ -2,12 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tennerama Franchise - Join the $10 Boutique Revolution</title>
+    <title>Tennerama Franchise</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Netlify Forms - Static hidden forms for form detection -->
+    <form name="contact" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="location" />
+      <textarea name="message"></textarea>
+    </form>
+    
+    <form name="schedule" netlify hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="preferredTime" />
+      <input type="text" name="location" />
+      <textarea name="message"></textarea>
+    </form>
   </body>
 </html>
