@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { languages } from '../lib/translations';
+import logoImage from '../assets/logo.jpeg';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +34,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="h-20 flex items-center p-0 m-0">
             <img 
-              src="/logo.jpeg" 
+              src={logoImage} 
               alt="Tennerama Logo" 
               className="h-full w-auto object-contain block p-0 m-0"
             />
