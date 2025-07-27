@@ -33,7 +33,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="h-20 flex items-center p-0 m-0">
             <img 
-              src="/logo.png" 
+              src="/logo.jpeg" 
               alt="Tennerama Logo" 
               className="h-full w-auto object-contain block p-0 m-0"
             />
