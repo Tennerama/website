@@ -45,7 +45,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@tennerama.com',
+              value: 'info@tennerama.ca',
       description: 'Send us an email anytime',
       color: 'text-green-600',
       bgColor: 'bg-green-50'

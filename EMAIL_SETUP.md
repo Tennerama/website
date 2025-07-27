@@ -5,7 +5,7 @@
 ### 方案1: 使用 mailto 链接 (已实现)
 - **优点**: 无需任何第三方服务，直接使用用户的邮件客户端
 - **工作原理**: 用户提交表单后，自动打开默认邮件客户端，预填充所有信息
-- **接收邮箱**: `info@tennerama.com`
+- **接收邮箱**: `info@tennerama.ca`
 
 ### 工作流程
 1. 用户填写联系表单
@@ -16,7 +16,7 @@
 
 ### 邮件格式示例
 ```
-收件人: info@tennerama.com
+收件人: info@tennerama.ca
 主题: Tennerama Franchise Inquiry
 
 姓名: John Doe
@@ -51,7 +51,7 @@
 ## 📧 如何查看提交的信息
 
 ### 当前方案 (mailto)
-- 查看 `info@tennerama.com` 邮箱
+- 查看 `info@tennerama.ca` 邮箱
 - 邮件会直接发送到你的收件箱
 
 ### 如果使用其他方案

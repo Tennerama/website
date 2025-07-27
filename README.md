@@ -183,8 +183,8 @@ This project is private and proprietary to Tennerama. All rights reserved.
 
 ## 📞 Contact
 
-- **Website:** [tennerama.com](https://tennerama.com)
-- **Email:** franchise@tennerama.com
+- **Website:** [tennerama.ca](https://tennerama.ca)
+- **Email:** franchise@tennerama.ca
 - **Phone:** 1-800-123-4567
 
 ## 🙏 Acknowledgments
